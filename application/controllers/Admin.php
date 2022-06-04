@@ -428,6 +428,7 @@ public function tier()
         if($query_tier->num_rows() > 0)
         {
             $result_tier = $query_tier->result_array();
+        
         }
         else
         {
@@ -447,7 +448,7 @@ public function tier()
         }
   
     }
-    
+
 
     //////////////////// ADD TIER TO A PLAN ////////////////////
 
