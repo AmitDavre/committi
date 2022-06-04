@@ -447,6 +447,8 @@ public function tier()
         }
   
     }
+    
+
     //////////////////// ADD TIER TO A PLAN ////////////////////
 
     $data['content'] = $this->load->view('admin/tier',$session_data+$plans,true);
