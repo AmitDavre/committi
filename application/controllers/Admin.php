@@ -414,6 +414,7 @@ public function tier()
     {
         $result_plans = '';
     }
+    
 
     $plans['plans']=$result_plans;
     ///////////////////// FETCH PLAN NAMES FROM DATABASE ////////////////////
