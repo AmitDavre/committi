@@ -419,6 +419,7 @@ public function tier()
     ///////////////////// FETCH PLAN NAMES FROM DATABASE ////////////////////
 
     //////////////////// ADD TIER TO  PLAN ////////////////////
+    
 
     if(isset($_POST['submit']))
     {   
@@ -428,6 +429,7 @@ public function tier()
         if($query_tier->num_rows() > 0)
         {
             $result_tier = $query_tier->result_array();
+        
         }
         else
         {
@@ -447,6 +449,7 @@ public function tier()
         }
   
     }
+
     
 
     //////////////////// ADD TIER TO A PLAN ////////////////////
