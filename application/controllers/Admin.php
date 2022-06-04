@@ -32,7 +32,7 @@ class Admin extends MY_Controller {
           'smtp_host' => 'smtp.hostinger.com',
           'smtp_port' => 587,
           'smtp_user' => '',
-          'smtp_pass' => '',
+          'smtp_pass' => 'sdasdas',
           'mailtype'  => 'html', 
           'charset'   => 'iso-8859-1'
       );
