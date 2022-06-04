@@ -419,6 +419,7 @@ public function tier()
     ///////////////////// FETCH PLAN NAMES FROM DATABASE ////////////////////
 
     //////////////////// ADD TIER TO  PLAN ////////////////////
+    
 
     if(isset($_POST['submit']))
     {   
