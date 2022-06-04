@@ -416,9 +416,9 @@ public function tier()
     }
 
     $plans['plans']=$result_plans;
-    ///////////////////// FETCH PLAN NAMES ////////////////////
+    ///////////////////// FETCH PLAN NAMES FROM DATABASE ////////////////////
 
-    //////////////////// ADD TIER TO A PLAN ////////////////////
+    //////////////////// ADD TIER TO  PLAN ////////////////////
 
     if(isset($_POST['submit']))
     {   
