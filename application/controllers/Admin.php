@@ -414,15 +414,17 @@ public function tier()
     {
         $result_plans = '';
     }
-    
 
     $plans['plans']=$result_plans;
-    ///////////////////// FETCH PLAN NAMES FROM DATABASE ////////////////////
+    ///////////////////// FETCH PLAN NAMES ////////////////////
 
-    //////////////////// ADD TIER TO  PLAN ////////////////////
+    //////////////////// ADD TIER TO A PLAN ////////////////////
 
     if(isset($_POST['submit']))
     {   
+
+        //check
+
         $plan_id              =  $this->input->post('plan_id');
 
         $query_tier = $this->User_model->query("SELECT * FROM tier WHERE tier_plan_id='".$plan_id."'" );
@@ -448,8 +450,6 @@ public function tier()
         }
   
     }
-    
-
     //////////////////// ADD TIER TO A PLAN ////////////////////
 
     $data['content'] = $this->load->view('admin/tier',$session_data+$plans,true);
