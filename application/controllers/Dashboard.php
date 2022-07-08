@@ -128,7 +128,8 @@ class Dashboard extends MY_Controller {
 	            'user_fund_time'        	=> $this->input->post('user_funds_time'),
 	            'user_city'        			=> $this->input->post('user_city'),
 	        );
-
+		
+			// user application data array 
 	        $user_application_data=array(
                   
                 'user_application_first_name'       	=> $this->input->post('first_name'),
