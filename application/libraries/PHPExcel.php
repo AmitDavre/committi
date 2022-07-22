@@ -57,7 +57,7 @@ class PHPExcel
     /**
      * Collection of Worksheet objects
      *
-     * @var PHPExcel_Worksheet[]
+
      */
     private $workSheetCollection = array();
 
