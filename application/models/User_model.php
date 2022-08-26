@@ -19,18 +19,6 @@ class User_model extends CI_Model
         return $this->db->count_all($table);
     }
 
-    /*     * ***************************************************.....Select data with limit and where*********************************************** */
-
-    function select_limit($table, $limit, $start, $by, $where) {
-        $this->db->limit($limit, $start);
-        $this->db->order_by($by, 'asc');
-        $this->db->where($where);
-        $query = $this->db->get($table);
-        //print_r($query); exit;
-        return $query;
-    }
-
-    /*     * ***************************************************.....Select data with limit************************************************************** */
 
     function select($table, $limit, $start, $by) {
         $this->db->limit($limit, $start);
