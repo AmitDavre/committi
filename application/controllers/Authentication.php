@@ -23,7 +23,7 @@
 
     }
 
-//////////////////////////////////////////////ADMIN LOGIN FUNCTION//////////////////////////////////////////////
+
 public function login()  
     {  
       if($this->session->userdata('username') != '')  
@@ -285,7 +285,7 @@ $result_plan_starting_data=$fetch_plan_starting_data->result_array();
                   $bidding_schedule_end_date_int = strtotime($value['bidding_schedule_end_date']);
                   $bidding_cycle_win_bid_check= strtotime($value['bidding_cycle_win_bid_check']); 
                  
-                //if($value['user_application_restriction_upto']!='' && $value['user_application_restriction_upto']>=$value['bidding_cycle_count'])
+        
                 if($value['user_application_restriction_upto']!='' && $value['user_application_restriction_upto'] >= $value['bidding_cycle_count'] && ($today_date_int >= $bidding_schedule_date_int) && ($today_date_int <= $bidding_schedule_end_date_int))
                 {
                             $status[$plan_id] = 'Restricted upto '.$value['user_application_restriction_upto'].' cycle';
@@ -507,22 +507,6 @@ public function getStatus3($plan_id){
 
 
 
-
-
-
-     // $fetch_plan_data=$this->User_model->query("SELECT * from plans where id='".$plan_id."'");
-     // if($fetch_plan_data->num_rows()>0){
-     //       $result_plan_starting_data=$fetch_plan_data->result_array();
-     //       $plan_bidding_start_date=strtotime($result_plan_starting_data['0']['bidding_start_date']);
-     //       $plan_bidding_end_date=strtotime($result_plan_starting_data['0']['bidding_end_date']);
-
-         
-
-     // }else{
-     //    $status[$plan_id] = 'Restricted-Date';
-     // }
-
-
    
 
 
@@ -638,10 +622,6 @@ public function sign_up()
                                    );  
 
 
-          // echo '<pre>';
-          // print_r($committi_users_data);
-          // echo '</pre>';
-          // die();
 
           $insertCommittiUsersData = $this->User_model->insertdata('committi_users',$committi_users_data);
           $this->session->set_flashdata('success', 'Submitted Successfully'); 
