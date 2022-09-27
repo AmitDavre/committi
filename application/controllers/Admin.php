@@ -3,7 +3,7 @@
 class Admin extends MY_Controller {
 
     /**
-     * Index Page for this controller.
+     * Index Page for this controll
      *
      * Maps to the following URL
      *      http://example.com/index.php/welcome
