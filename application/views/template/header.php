@@ -11,9 +11,7 @@ if($session_data['login_type'] == 'admin'){
                array_push($tab_array,$tab_right['tab_name']);
         }
       }
-        // echo '<pre>';
-        //   print_r($tab_array);
-        //   echo '</pre>';
+
       ?> 
 
 <!------------------------------------------------ ADMIN HEADER STARTS -------------------------------------->
