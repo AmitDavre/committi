@@ -133,7 +133,6 @@
                                             <select  class="form-control" id="select_bank_account" name="select_bank_account" onchange="return get_bank_info_by_id(this);">
                                                 <option value="">Please Select</option>
                                              <?php
-                                                // Iterating through the tier array
                                                  if($result_fetch_bank_account != '')
                                                  {
                                                     foreach($result_fetch_bank_account as $key =>$item){
