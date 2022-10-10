@@ -39,7 +39,6 @@
 
                                 <div class="col-md-8 col-lg-6 col-xl-4">
 
-                                    <!-- Reminder Block -->
 
                                     <div class="block block-themed block-fx-shadow mb-0">
 
