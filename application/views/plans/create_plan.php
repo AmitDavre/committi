@@ -35,7 +35,7 @@ else{
                             </nav>
                     </div>
 
-                <!-- END Hero -->
+               
 
 
 
