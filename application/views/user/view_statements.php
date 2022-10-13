@@ -33,7 +33,6 @@
 
                     <div class="block">
                         <div class="block-content block-content-full">
-<!--------------------------------- TRANSACTION TABLE DETAILS ------------------------------------->
                            
                                                <table id="view_plans_table" class="table table-bordered table-striped table-vcenter js-dataTable-simple text-nowrap" style="width:100%!important">
                                             <thead>
