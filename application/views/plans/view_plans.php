@@ -168,5 +168,4 @@ $no_of_bidding_cycle            = $this->config->item('no_of_bidding_cycle');
         </div>
                 <!-- END Page Content -->
  </main>
-            <!-- END Main Container -->
 
