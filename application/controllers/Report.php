@@ -130,7 +130,6 @@ class Report extends MY_Controller {
           $obj_pdf->SetFooterMargin(PDF_MARGIN_FOOTER);  
           $obj_pdf->SetMargins(PDF_MARGIN_LEFT, '5', PDF_MARGIN_RIGHT);  
           $obj_pdf->setPrintHeader(false);  
-          // $obj_pdf->setPrintFooter(false);  
           $obj_pdf->setFooterData(array(0, 64, 0), array(0, 64, 128));
           $obj_pdf->SetAutoPageBreak(TRUE,30);  
           $obj_pdf->SetFont('helvetica', '', 9);  
