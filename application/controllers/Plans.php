@@ -63,9 +63,7 @@ class Plans extends MY_Controller {
             // echo $tesssst;
              $add_min = date('Y-m-d H:i:s', strtotime("$testtt $tesssst"));
 
-            // echo '<pre>';
-            // print_r($add_min);
-            // echo '</pre>';
+
 
         }
     }
