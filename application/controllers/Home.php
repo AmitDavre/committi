@@ -28,7 +28,6 @@ class Home extends CI_Controller {
 
       
     }
-///////////////////////// HOME PAGE //////////////////////////////////////////////////
 	public function index()
 	{    
         $result = '';
