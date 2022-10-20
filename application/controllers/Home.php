@@ -76,7 +76,6 @@ class Home extends CI_Controller {
         $this->load->view('home_template/template', $data);
 	}
 
-///////////////////////// HOME PAGE ENDS //////////////////////////////////////////////////
 
 
 public function termsAndConditions()
