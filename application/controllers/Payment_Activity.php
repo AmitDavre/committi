@@ -32,7 +32,6 @@ class Payment_Activity extends MY_Controller
      public function generatePaymentReport(){
         //-----------------------------------------------------
         //
-        //  cron-job details: http://rs200.whb.tempwebhost.net/~dhrivum5/committi/Payment_Activity/generatePaymentReport
         //  
         //  check cpanel for cronjob details
         //  
