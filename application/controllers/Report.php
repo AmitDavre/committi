@@ -980,7 +980,6 @@ public function generateUserDetailsReport(){
                   $obj_pdf->SetAutoPageBreak(TRUE, 10);  
                   $obj_pdf->SetFont('helvetica', '', 9);  
                   $obj_pdf->AddPage();  
-                  // $style = array('width' => 0.5, 'dash' => '2,2,2,2', 'phase' => 0, 'color' => array(0, 0, 0));
                   // $obj_pdf->Line(-1, 210, 250, 210, $style);
                   $content = '';
                   $content .= '<h4 align="left"><img  src="'.base_url().'assets/img/logo2.jpg"></h4><br/>';
