@@ -29,7 +29,6 @@ namespace PhpOffice\PhpSpreadsheet;
 class Autoloader
 {
     /**
-     * Register the Autoloader with SPL
      */
     public static function register()
     {
