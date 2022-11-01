@@ -272,7 +272,6 @@ public function contactUs()
         $this->session->unset_userdata('code');
         $this->session->set_userdata('code',$captcha['word']);
         
-        // Display captcha image
         echo $captcha['image'];
     }
 public function aboutUs()
