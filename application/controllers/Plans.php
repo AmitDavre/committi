@@ -48,7 +48,6 @@ class Plans extends MY_Controller {
                 $date->modify("+{$mDiff} months");
             }
 
-            // If we are billing earlier than the last day of the month,
             // rewind that number of days
             if ($day < $date->format('d'))
             {
