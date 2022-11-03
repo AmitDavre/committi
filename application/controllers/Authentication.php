@@ -45,7 +45,7 @@ public function login_validation()
          $this->form_validation->set_rules('password', 'Password', 'required');  
          if($this->form_validation->run())  
          {  
-              //true  
+             
               $username = $this->input->post('username');  
               $password = $this->input->post('password');  
               $remember = $this->input->post('login-remember');  
