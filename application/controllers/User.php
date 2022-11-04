@@ -86,7 +86,6 @@ class User extends MY_Controller {
         $data['content'] = $this->load->view('user/available_plans',$session_data+$plans+$session_success,true);
         $this->load->view('template/template', $data);
     }
-    /////////////////////////////////////// USER PLANS  END /////////////////////////////////////////////////////////////
 
     /////////////////////////////////////// TRANSACTIONS STARTS //////////////////////////////////////////////////
 
