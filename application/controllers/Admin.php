@@ -42,7 +42,6 @@ class Admin extends MY_Controller {
 
     }
 
-/////////////////////////////////////// APPLICATION REVIEW STARTS /////////////////////////////////////////////////////////////
 public function session_data_recursive()
 {
     $result = '';
