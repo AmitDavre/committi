@@ -54,7 +54,6 @@ class User_model extends CI_Model
         $this->db->update($table, $data1);
     }
 
-    /*     * ****************************************************.....Insert data to a table ************************************************************** */
 
     function insertdata($table, $data) {
         $this->db->insert($table, $data);
