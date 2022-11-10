@@ -60,7 +60,6 @@ public function login_validation()
                   $result = $query->result_array();
                   $email_verify=$result[0]['email_verify'];
 
-                /////////////check email verified or not,1 mean verified///////////
                   if($email_verify=='0'){
                     $this->session->set_flashdata('email-not-verified', 'email not verified');  
                     redirect(base_url());  
