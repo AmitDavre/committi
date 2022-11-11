@@ -22,7 +22,6 @@ else{
 </style>
             <main id="main-container">
 
-                  <!-- Hero -->
 
                     <div class="content ">
                             <nav class="flex-sm-00-auto ml-sm-3" aria-label="breadcrumb">
