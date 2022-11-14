@@ -115,6 +115,7 @@ class Payment_Activity extends MY_Controller
              $name='';
         }
 
+		
      
          $link= base_url();
 
