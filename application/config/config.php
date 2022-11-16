@@ -26,7 +26,7 @@ $config['base_url'] = '';
 date_default_timezone_set('US/Eastern');
 //date_default_timezone_set('Asia/Kolkata');
 
-//echo date('Y-m-d');
+
 /*
 |--------------------------------------------------------------------------
 | Index File
