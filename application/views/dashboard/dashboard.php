@@ -12,7 +12,6 @@ if($session_data['login_type'] == 'admin'){
       }
     ?>
 
-<!------------------------------------------------ ADMIN DASHBOARD STARTS -------------------------------------->
  <style type="text/css">
      
      .border-info {
