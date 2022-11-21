@@ -32,7 +32,6 @@ public function login()
        }
        else
        {
-           // $this->load->view("login/login");  
            redirect(base_url());
        }
     }  
