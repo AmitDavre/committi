@@ -30,7 +30,6 @@ class Dashboard extends MY_Controller {
       
     }
 
-/////////////////////////////////////// ADMIN PROFILE /////////////////////////////////////////////////////////////
 	public function profile()
 	{
 		$id =$this->session->userdata('id');
