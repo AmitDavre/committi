@@ -70,7 +70,6 @@ class Home extends CI_Controller {
         $data['setting_step_guide_11']='';
         $data['setting_step_guide_12']='';
         }
-		// $this->load->view('index',$data);
 
         $data['content'] = $this->load->view('index', $data , true);
         $this->load->view('home_template/template', $data);
