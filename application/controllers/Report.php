@@ -290,7 +290,6 @@ Email : info@committi.com<br></td></tr>
             // Create new Spreadsheet object
             $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
 
-            // add style to the header
             $styleArray = array(
                     'font' => array(
                             'bold' => true,
