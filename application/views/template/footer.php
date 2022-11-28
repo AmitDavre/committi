@@ -33,14 +33,11 @@
         <script src="<?php echo base_url() ?>assets/js/plugins/slick-carousel/slick.min.js"></script>
 
 
-        <!-- Page JS Plugins -->
         <script src="<?php echo base_url()?>assets/js/plugins/chart.js/Chart.bundle.min.js"></script>
 
-        <!-- Page JS Code -->
         <script src="<?php echo base_url()?>assets/js/pages/be_pages_dashboard.min.js"></script>
         <script src="<?php echo base_url() ?>assets/js/pages/be_comp_dialogs.min.js"></script>
         
-               <!-- Page JS Plugins -->
 
         <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
         <script src="<?php echo base_url() ?>assets/js/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
@@ -79,7 +76,6 @@
 
         <script>jQuery(function(){ One.helpers('magnific-popup'); });</script>
 
-        <!-- Page JS Helpers (Flatpickr + BS Datepicker + BS Colorpicker + BS Maxlength + Select2 + Masked Inputs + Ion Range Slider plugins) -->
         <script>jQuery(function(){ One.helpers(['flatpickr', 'datepicker', 'colorpicker', 'maxlength', 'select2', 'masked-inputs', 'rangeslider']); });</script>
 
 
