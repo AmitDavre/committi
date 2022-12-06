@@ -28,7 +28,6 @@ class User extends MY_Controller {
 
          $this->load->library('session');
     }
-    /////////////////////////////////////// USER PLANS STARTS /////////////////////////////////////////////////////////////
     public function session_data_recursive(){
         $id = $session_data['session_data']=$this->session->userdata('id');
         $query = $this->User_model->query("SELECT * FROM users WHERE id= '".$id."'");
