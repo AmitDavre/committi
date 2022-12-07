@@ -109,7 +109,6 @@ public function login_validation()
          }  
          else  
          {  
-              //false  
               $this->login();  
          }  
     }  
