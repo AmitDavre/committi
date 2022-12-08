@@ -31,13 +31,7 @@ class Cronjob extends MY_Controller{
 	{
 		die();
 		
-		//-----------------------------------------------------
-		//
-		//	cron-job details: http://rs200.whb.tempwebhost.net/~dhrivum5/committi/Cronjob/checkTierLimit
-		//	
-		//	check cpanel for cronjob details
-		//	
-		//  curl --silent http://rs200.whb.tempwebhost.net/~dhrivum5/committi/Cronjob/checkTierLimit
+		
 		//---------------------------------------------------------
 
  		// LOAD MODEL 
