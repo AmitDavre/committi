@@ -1,7 +1,7 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Admin extends MY_Controller {
-
+    // branch 1 commit
     /**
      * Index Page for this controll
      *
