@@ -38,6 +38,8 @@ class Admin extends MY_Controller {
       );
 
 
+
+      
         $this->load->library('email',$config);
 
     }
