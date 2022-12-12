@@ -239,7 +239,6 @@ public function dashboard()
 
           }
     
-          // die();
 
 
           $data['content'] = $this->load->view('dashboard/dashboard',$session_data+$available_plans+$enrolled_plans+$count_userS+$count_Plans+$count_Application+$count_pendingApplication+ $user_application+$statusArry+$rights,true);
@@ -297,8 +296,6 @@ $result_plan_starting_data=$fetch_plan_starting_data->result_array();
 
                 if(($today_date_int >= $bidding_schedule_date_int) && ($today_date_int <= $bidding_schedule_end_date_int))
                 { 
-                  // $check_bidding_cycle=implode(',',$previous_bidding_cycle);
-                  // $check_previous_cycle_winner=$this->User_model->query("SELECT * FROM bidding_details WHERE bidding_plan_id = '".$plan_id."' AND bidding_cycle_count in('".$check_bidding_cycle."') ");
 
                   $query_check_win_bid = $this->User_model->query("SELECT * FROM bidding_details WHERE bidding_plan_id = '".$plan_id."' AND bidding_cycle_count = '".$value['bidding_cycle_count']."'");
                     $exist_bidding_user_id=array();
@@ -517,10 +514,6 @@ public function logout()
       }  
 
 
-  ////////////////////////////////////////////// ADMIN LOGIN ENDS /////////////////////////////////////////////////////////////
-
-  ///////////////////////////////////////////// USER SIGN UP STARTS////////////////////////////////////////////////////////////
-
 public function sign_up()  
     {  
       if($this->session->userdata('username') != '')  
@@ -623,7 +616,7 @@ public function sign_up()
           $insertCommittiUsersData = $this->User_model->insertdata('committi_users',$committi_users_data);
           $this->session->set_flashdata('success', 'Submitted Successfully'); 
           $test_email = $this->input->post('email');
-          // SEND CONFIRMATION EMAIL 
+
           $reset_link = base_url().'verify-email/'.$last_insert_id;
 
             $password_message = '<div style="background-color: #eeeeef; padding: 50px 0; "><div style="max-width:640px; margin:0 auto; "><div style="color: #fff; text-align: center;background-color:#120e35; padding: 30px; border-top-left-radius: 3px; border-top-right-radius: 3px; margin: 0;"><h1>Email Verification</h1></div><div style="padding: 20px; background-color: rgb(255, 255, 255); color:#555;"><p style="font-size: 14px;"> Hello '.$this->input->post('user_first_name').' '.$this->input->post('user_last_name').',<br><br>Please verify your email before logging into committi. Click the link below to verify.&nbsp;</p><p></p><a href="'.$reset_link.'" target="_blank" style="display: inline-block; padding: 10px 12px; font-family: Source Sans Pro, Helvetica, Arial, sans-serif; font-size: 14px; color: #ffffff; text-decoration: none; border-radius: 0px;background-color:#120e35;">Verify Email</a><p style="font-size: 14px;"><br></p><p style="font-size: 14px;">Thank you - <br>Committi</p></div></div></div>';
@@ -647,11 +640,9 @@ public function sign_up()
             if($fetch_dropdown_values->num_rows()>0){
                 foreach ($fetch_dropdown_values->result() as $value) {
                    if($value->dropdown_values_type=='residential status'){
-                    // $data['residential_data']=$value;
                     array_push($residential_data_array,$value);
                    }
                     if($value->dropdown_values_type=='committi_joining_reasons'){
-                    // $data['joining_committi_data']=$value;
                      array_push($joining_committi_data_array,$value);
                    }
                 }
@@ -845,10 +836,7 @@ public function newPassword(){
 
     }
 
-
-///////////////////////////////////////////// FORGOT PASSWORD ENDS /////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////// FORGOT USERNAME STARTS////////////////////////////////////////////////////////////   
+  
 public function forgot_username()  
     {  
       
@@ -864,7 +852,6 @@ public function username()
           $date=$this->input->post('date');
           if($sin && $date !='')
           {
-            // run query
             $query = $this->User_model->query("SELECT * FROM  committi_users WHERE user_sin LIKE '%".$sin."' AND user_dob='".$date."' ");
         
               if($query->num_rows() > 0)
@@ -883,7 +870,6 @@ public function username()
           }
           else
           {
-            //reload with empty error 
              $this->session->set_flashdata('error','SIN and Date field required!');
              $this->load->view("login/forgot_username");  
           }
@@ -893,12 +879,6 @@ public function username()
           redirect(base_url() . 'login'); 
         }
     }  
-
-
-///////////////////////////////////////////// FORGOT USERNAME ENDS////////////////////////////////////////////////////////////    
-
-/////////////////////////////////////// PLAN CONFIRMATION STARTS //////////////////////////////////////////////////
-
 
 
 public function plan_confirmation()
@@ -922,12 +902,6 @@ public function plan_confirmation()
       $result = '';
   }
 
-   // echo '<pre>';
-   // print_r($result);
-   // echo '</pre>';
-
-  // link_expire_check_value        = 1 = link expired 
-
 
   foreach($result as $item)
   {
@@ -943,7 +917,6 @@ public function plan_confirmation()
      $this->load->view('error_pages/link_expire');
     }
   }
-// die();
 
 
 }
@@ -955,20 +928,10 @@ public function plan_confirmation()
 
     $status_update_date = date('Y-m-d');
 
-    // user_application_plan_confirmation = 0 = reject offer 
-    // user_application_plan_confirmation = 1 = accept offer 
-    // user_application_link_expre        = 1 = link expired 
-
-      
-
-
-
 
      if(isset($_POST['reject'])) 
      {
-        // die('');
-        //  print_r($_POST);
-        // die('1');
+
         $this->load->view('user/confirmation_message');
     
 
@@ -1074,7 +1037,6 @@ public function plan_confirmation()
            $insertConfirmedUsersData = $this->User_model->insertdata('confirmed_plan_users',$confirmed_user);
            }
 
-        // ////////////////////////////////// CALCULATION OF LEFT APPLICATIONS IN THE PLAN ////////////////////
         $query_plans1 = $this->User_model->query("SELECT * FROM confirmed_plan_users WHERE  confirmed_plan_plan_id= '".$hidden_url_plan_id."'");
 
         if($query_plans1->num_rows() > 0)
@@ -1088,7 +1050,6 @@ public function plan_confirmation()
  
         $total=count($result_plans1);
 
-        ////////// FOR ONLY TOTAL NUMBER OF APPLICATION////////////
         $query_plans = $this->User_model->query("SELECT * FROM plans WHERE id= '".$hidden_url_plan_id."'");
         if($query_plans->num_rows() > 0)
         {
@@ -1098,17 +1059,11 @@ public function plan_confirmation()
         {
             $result_plans = '';
         }
-        //////////////////////////////////////////////////////////
 
         $total_value_applications = $result_plans['0']['total_no_appliactions'] - $total ;
         $latest_count = $result_plans['0']['enrollment_left']-1;
 
         $UpdateQuery = $this->User_model->query("UPDATE plans SET left_applications ='".$total_value_applications."', enrollment_left ='".$latest_count."' WHERE id ='".$hidden_url_plan_id."'");
-        // ////////////////////////////////// CALCULATION OF LEFT APPLICATIONS IN THE PLAN ////////////////////
-
-
-        ///////////////////////////////// SEND EMAIL IF LEFT APPLICATIONS REACHES ZERO //////////////////////
-
 
 
         $query_plan_user = $this->User_model->query("SELECT * FROM user_application WHERE user_application_plan_id= '".$hidden_url_plan_id."'");
@@ -1162,7 +1117,6 @@ public function plan_confirmation()
           }
         }
 
-        ///////////////////////////////// SEND EMAIL IF LEFT APPLICATIONS REACHES ZERO //////////////////////
 
         $this->load->view('user/confirmation_message');
 
@@ -1174,7 +1128,6 @@ public function plan_confirmation()
      }
     
   }
-/////////////////////////////////////// PLAN CONFIRMATION END ///////////////////////////////////////////////////    
 
 public function destroyEmailVerficationSession(){
   unset($_SESSION['email-verified']); 
