@@ -83,7 +83,6 @@ public function application_review()
     }
 
     $session_data['session_data']=$result['0'];
-    ///////////////////FETCH THE DETAILS FROM USER APPLICATION TABLE/////////////////
     if(isset($_POST['filter_submit']))
     {
         if($this->input->post('from_filter_date') !='')
@@ -124,19 +123,16 @@ public function application_review()
 
     $user_application['user_application']=$result_application;
 
-    ///////////////////FETCH THE DETAILS FROM USER APPLICATION TABLE ENDS/////////////////
 
     $data['content'] = $this->load->view('admin/application_review',$session_data+$user_application+$rights,true);
     $this->load->view('template/template', $data);
 }
-/////////////////////////////////////// APPLICATION REVIEW END //////////////////////////////////////////////////////////////////////
 
 public function generate_key($length){
         $chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         return substr(str_shuffle($chars), 0, $length);
 }
 
-//////////////////////////////  REVIEW EACH APPLICATION STARTS /////////////////////////////////////////////////////////////
 
 public function review_application()
 {
@@ -171,7 +167,6 @@ public function review_application()
     $url_data       = $this->uri->segment(2);                   // FETCHING VALUE FROM URL 
     $url_plan_id    = $this->uri->segment(3);                   // FETCHING VALUE FROM URL 
 
-    ///////////////////FETCH THE DETAILS FROM USER APPLICATION TABLE/////////////////
     $query_application = $this->User_model->query("SELECT * FROM user_application WHERE u_id ='".$url_data."' AND user_application_plan_id = '".$url_plan_id."'");
     if($query_application->num_rows() > 0)
     {
@@ -217,7 +212,6 @@ public function review_application()
     $session_data['session_data']=$result['0'];
 
 
-    ///////////////////FETCH THE DETAILS FROM USER APPLICATION TABLE ENDS/////////////////
 
     if(isset($_POST['submit']))
     {
@@ -228,7 +222,6 @@ public function review_application()
            if($check_tab_rights[0]['all_rights']==0 && $check_tab_rights[0]['edit_right']==0)
            redirect(base_url() . 'dashboard');
           }
-        // FETCH DATA FROM INPUT FIELDS 
         $u_id                                   =  $this->input->post('hidden_u_id');
         $user_application_first_name            =  $this->input->post('user_first_name');
         $user_application_middle_name           =  $this->input->post('user_middle_name');
@@ -253,15 +246,9 @@ public function review_application()
         $user_application_no_bidding_cycle      =  $this->input->post('user_application_no_bidding');
         $hidden_user_application_plan_id        =  $this->input->post('hidden_user_application_plan_id');
         $user_restriction_level                 =  $this->input->post('user_restriction_level');
-       // UPDATE DATA IN USERS TABLE 
         $UpdateUserData = $this->User_model->query("UPDATE users SET first_name ='".$user_application_first_name."',middle_name ='".$user_application_middle_name."',last_name ='".$user_application_last_name."',username ='".$user_application_email."',dob='".$user_application_dob."' WHERE id= '".$u_id."'");
-        // UPDATE DATA IN COMMITTI_USERS TABLE 
 
           $UpdateCommittiUserData= $this->User_model->query("UPDATE committi_users SET user_first_name ='".$user_application_first_name."',user_middle_name ='".$user_application_middle_name."',user_last_name ='".$user_application_last_name."',user_gender ='".$user_application_gender."',user_sin ='".$user_application_sin."',user_dob ='".$user_application_dob."',usert_street ='".$usert_application_street."',user_street_name ='".$user_application_street_name."',user_unit_no ='".$user_application_unit_no."',user_provience ='".$user_application_provience."',user_postal_code ='".$user_application_postal_code."',user_phone_no ='".$user_application_phone_no."',user_email ='".$user_application_email."',user_employment_status ='".$user_application_employment_status."',user_gross_income ='".$user_application_gross_income."',user_household_income ='".$user_application_household_income."',user_residential_status ='".$user_application_residential_status."',user_planning ='".$user_application_planning."',user_fund_time ='".$user_application_fund_time."' WHERE user_login_id= '".$u_id."'");
-
-
-        // UPDATE DATA IN APPLICATION TABLE 
-
          $UpdateQuery = $this->User_model->query("UPDATE user_application SET user_application_first_name ='".$user_application_first_name."',user_application_middle_name ='".$user_application_middle_name."',user_application_last_name ='".$user_application_last_name."',user_application_gender ='".$user_application_gender."',user_application_sin ='".$user_application_sin."',user_application_dob ='".$user_application_dob."',usert_application_street ='".$usert_application_street."',user_application_street_name ='".$user_application_street_name."',user_application_unit_no ='".$user_application_unit_no."',user_application_provience ='".$user_application_provience."',user_application_postal_code ='".$user_application_postal_code."',user_application_phone_no ='".$user_application_phone_no."',user_application_email ='".$user_application_email."',user_application_employment_status ='".$user_application_employment_status."',user_application_gross_income ='".$user_application_gross_income."',user_application_household_income ='".$user_application_household_income."',user_application_residential_status ='".$user_application_residential_status."',user_application_planning ='".$user_application_planning."',user_application_fund_time ='".$user_application_fund_time."',user_application_tier ='".$user_application_tier."',user_application_no_bidding_cycle ='".$user_application_no_bidding_cycle."' ,user_application_offer_sent ='1',user_application_restricted ='".$user_application_no_bidding_cycle."',user_application_restriction_upto ='".$user_restriction_level."' WHERE u_id= '".$u_id."' and user_application_plan_id ='".$hidden_user_application_plan_id."'");
 
 
@@ -269,9 +256,6 @@ public function review_application()
 
 
         $hiddenUserApplicationPlanId = $this->input->post('hidden_user_application_plan_id');
-
-
-        ///// USER ALERT NOTIFICATION
 
         $ApplicationFormAlert= array(  
 
@@ -328,11 +312,7 @@ public function review_application()
 
 
       
-  
-
-
-        /////////////////////////////////
-
+ 
         $this->session->set_flashdata('success', 'Record Updated Successfully');  
 
           $plan_id       = $this->input->post('hidden_user_application_plan_id');
@@ -393,10 +373,7 @@ public function review_application()
      $data['content'] = $this->load->view('admin/review_application',$session_data+$user_application+$user_application_plan+$plan_details+$user_application_table+$committi_joining_data+$residential_data,true);
     $this->load->view('template/template', $data);
 }
-///////////////////////////////////////  REVIEW  EACH APPLICATION END /////////////////////////////////////////////////////
 
-
-////////////////////////////////////// TIER TAB IN PLANS IN ADMIN PANEL  //////////////////////////////////////////////////
 public function tier()
 {   
     $result                         = '';
@@ -415,11 +392,7 @@ public function tier()
     }
     
 
-    $plans['plans']=$result_plans;
-    ///////////////////// FETCH PLAN NAMES FROM DATABASE ////////////////////
-
-    //////////////////// ADD TIER TO  PLAN ////////////////////
-    
+    $plans['plans']=$result_plans;    
 
     if(isset($_POST['submit']))
     {   
@@ -451,13 +424,10 @@ public function tier()
     }
 
     
-
-    //////////////////// ADD TIER TO A PLAN ////////////////////
-
     $data['content'] = $this->load->view('admin/tier',$session_data+$plans,true);
     $this->load->view('template/template', $data);
 }
-////////////////////////////////////// TIER TAB IN PLANS IN ADMIN PANEL  //////////////////////////////////////////////////
+
 
     public function display_checked_tier()
     {
@@ -631,7 +601,6 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
         $new_month = date('Y-m-d H:i:s', $month);
 
         $sales_due_date = $new_month;
-        // create a time stamp of the date
         $time = strtotime($sales_due_date);
 
         $selectBiddingCycle = $this->input->post('BiddingCycleCount');
@@ -639,8 +608,6 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
 
         if($selectBiddingCycle == '2')
         {
-
-            // FOR WEEKLY CYCLE 
 
             for ($x = 1; $x <= $bidding_count; $x++) 
             { 
@@ -660,8 +627,6 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
         if($selectBiddingCycle == '3')
         {
 
-            // FOR BI WEEKLY  CYCLE 
-
             for ($x = 1; $x <= $bidding_count; $x++) 
             { 
                 // convert timestamp back to date string
@@ -679,8 +644,6 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
 
         if($selectBiddingCycle == '4')
         {
-
-            // FOR MONTHLY CYCLE 
 
             for ($x = 1; $x <= $bidding_count; $x++) 
             { 
@@ -704,18 +667,14 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
         if($selectBiddingCycle == '5')
         {
 
-            // FOR BI MONYHLY  CYCLE 
-
 
             for ($x = 1; $x <= $bidding_count; $x++) 
             { 
-                // convert timestamp back to date string
                 $date = date('Y-m-d H:i:s', $time);
                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                 $due_dates[] = array(
                     'date' => $date,
                 );
-                // move to next timestamp
                 $time = strtotime('+15 days', $time);
             }
             echo json_encode($due_dates); 
@@ -726,17 +685,13 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
         if($selectBiddingCycle == '6')
         {
 
-            // FOR QUARTERLY  CYCLE 
-
             for ($x = 1; $x <= $bidding_count; $x++) 
             { 
-                // convert timestamp back to date string
                 $date = date('Y-m-d H:i:s', $time);
                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                 $due_dates[] = array(
                     'date' => $date,
                 );
-                // move to next timestamp
                 $time = strtotime('+3 month', $time);
             } 
             echo json_encode($due_dates); 
@@ -747,7 +702,6 @@ $query_get_users = $this->User_model->query("SELECT * FROM user_application wher
         if($selectBiddingCycle == '7')
         {
 
-            // FOR SEMI ANNUALY  CYCLE 
 
             for ($x = 1; $x <= $bidding_count; $x++) 
             { 
