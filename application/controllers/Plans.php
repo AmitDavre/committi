@@ -24,17 +24,14 @@ class Plans extends MY_Controller {
 
         for ($a = 0; $a < $iterations; $a++)
         {
-            // Increment at least one month, but cap at the last day
             $date->modify("last day of next month");
 
-            // Add on additional months if required
             if ($months > 1)
             {
                 $mDiff = $months-1;
                 $date->modify("+{$mDiff} months");
             }
 
-            // rewind that number of days
             if ($day < $date->format('d'))
             {
                 $dDiff = $date->format('d') - $day;
@@ -45,7 +42,6 @@ class Plans extends MY_Controller {
 
             $tesssst = date("H:i:s", strtotime($time));
 
-            // echo $tesssst;
              $add_min = date('Y-m-d H:i:s', strtotime("$testtt $tesssst"));
 
 
@@ -84,7 +80,6 @@ public function getMonthCycle ($new_month)
 
     return $newdata;
 }
-/////////////////////////////////////// CREATE NEW PLAN ///////////////////////////////////////////////////////////////
     public function create_new_plan()
     {
 
@@ -109,7 +104,6 @@ public function getMonthCycle ($new_month)
 
         if(isset($_POST['submit'])) 
         {   
-         // Array for insertion 
           if(isset($_SESSION['create_plan_token']))
             {
                 if (isset($_POST['create_plan_token']))
@@ -131,10 +125,7 @@ public function getMonthCycle ($new_month)
                          $newwww= date('H:i', $newtime);
                          // $FormatBiddingENDDate=date('Y-m-d H:i', strtotime($newwww));
                            
-                           $FormatBiddingENDDate=date('Y-m-d H:i', strtotime($BiddingStartDate."+30 minutes"));
-
-                         // $FormatBiddingEndDate  =date('Y-m-d H:i', strtotime($BiddingStartDate));
-
+                           $FormatBiddingENDDate=date('Y-m-d H:i', strtotime($BiddingStartDate."+30 minutes"))
 
                          $removePercentThreshOld = str_replace('%', '', $this->input->post('bidding_decrement'));
                          $bidding_start_amountwithcomma = $this->remove_currency_symbol($this->input->post('bidding_start_amount'));
@@ -180,17 +171,8 @@ public function getMonthCycle ($new_month)
 
 
                         );
-
-                         // echo '<pre>';
-                         // print_r($data);
-                         // echo '</pre>';
-
-                         // die();
                         $insertPlanData = $this->User_model->insertdata('plans',$data);
 
-                        
-
-                         ////// CREATE BDDING SCHEDULE //////////
                         $start = $month = strtotime($BiddingStartDate);
 
                         $insert_id = $this->db->insert_id();
@@ -208,25 +190,17 @@ public function getMonthCycle ($new_month)
 
                         if($selectBiddingCycle == '2')
                         {
-
-                            // FOR WEEKLY CYCLE 
-
                             for ($x = 1; $x <= $bidding_count; $x++) 
                             { 
-                                // convert timestamp back to date string
                                 $date = date('Y-m-d H:i:s', $time);
                                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                                 $due_dates[] = array($date,$date1);
-                                // move to next timestamp
                                 $time = strtotime('+7 days', $time);
                             }   
                         }        
 
                         if($selectBiddingCycle == '3')
                         {
-
-                            // FOR BI WEEKLY  CYCLE 
-
                             for ($x = 1; $x <= $bidding_count; $x++) 
                             { 
                                 // convert timestamp back to date string
@@ -240,16 +214,11 @@ public function getMonthCycle ($new_month)
 
                         if($selectBiddingCycle == '4')
                         {
-
-                            // FOR MONTHLY CYCLE 
-
                             for ($x = 1; $x <= $bidding_count; $x++) 
                             { 
-                                // convert timestamp back to date string
                                 $date = date('Y-m-d H:i:s', $time);
                                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                                 $due_dates[] = array($date,$date1);
-                                // move to next timestamp
                                 $time = strtotime('+1 month', $time);
                             }
                         
@@ -258,16 +227,11 @@ public function getMonthCycle ($new_month)
                         if($selectBiddingCycle == '5')
                         {
 
-                            // FOR BI MONYHLY  CYCLE 
-
-
                             for ($x = 1; $x <= $bidding_count; $x++) 
                             { 
-                                // convert timestamp back to date string
                                 $date = date('Y-m-d H:i:s', $time);
                                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                                 $due_dates[] = array($date,$date1);
-                                // move to next timestamp
                                 $time = strtotime('+15 days', $time);
                             }
                         
@@ -275,16 +239,11 @@ public function getMonthCycle ($new_month)
 
                         if($selectBiddingCycle == '6')
                         {
-
-                            // FOR QUARTERLY  CYCLE 
-
                             for ($x = 1; $x <= $bidding_count; $x++) 
                             { 
-                                // convert timestamp back to date string
                                 $date = date('Y-m-d H:i:s', $time);
                                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                                 $due_dates[] = array($date,$date1);
-                                // move to next timestamp
                                 $time = strtotime('+3 month', $time);
                             } 
                         
@@ -292,16 +251,11 @@ public function getMonthCycle ($new_month)
 
                         if($selectBiddingCycle == '7')
                         {
-
-                            // FOR SEMI ANNUALY  CYCLE 
-
                             for ($x = 1; $x <= $bidding_count; $x++) 
                             { 
-                                // convert timestamp back to date string
                                 $date = date('Y-m-d H:i:s', $time);
                                 $date1 = date('Y-m-d H:i:s', strtotime('+30 minute', $time));
                                 $due_dates[] = array($date,$date1);
-                                // move to next timestamp
                                 $time = strtotime('+6 month', $time);
                             }
                         
@@ -321,21 +275,6 @@ public function getMonthCycle ($new_month)
                         $plan_sequence=$this->input->post('hidden_plan_sequence_value')+1;
                         $plan_sequence_column_name=$this->input->post('hidden_plan_sequence_column');
                         $UpdatePlanSequence = $this->User_model->query("UPDATE plan_sequence SET $plan_sequence_column_name ='".$plan_sequence."' WHERE plan_sequence_id='1'");
-
-                        // $plan_sequence = $this->input->post('plan_name_sequence');
-                        // if($plan_sequence == '1')
-                        // {
-                        //     $plan_sequence_100 = $this->input->post('hidden_sequence_100')+1;
-
-                        //     $UpdatePlanSequence = $this->User_model->query("UPDATE plan_sequence SET plan_sequence_100 ='".$plan_sequence_100."' WHERE plan_sequence_id='1'");
-
-                        // }
-                        // if($plan_sequence == '2')
-                        // {
-                        //     $plan_sequence_1000 = $this->input->post('hidden_sequence_1000')+1;
-                        //     $UpdatePlanSequence = $this->User_model->query("UPDATE plan_sequence SET plan_sequence_1000='".$plan_sequence_1000."' WHERE plan_sequence_id='1'");
-
-                        // }
                          unset($_SESSION['create_plan_token']);
                     }
                 }
@@ -358,16 +297,9 @@ public function getMonthCycle ($new_month)
         $this->load->view('template/template', $data);
     }
 
-/////////////////////////////////////// CREATE NEW PLAN ENDS ///////////////////////////////////////////////////////////////
-
-
-/////////////////////////////////////// VIEW PLAN  ///////////////////////////////////////////////////////////////
-
 
 public function view_plans()
 {
-
-        // Header name data 
          $id=$this->session->userdata('id');
         $check_tab_rights=$this->checkRights('Plans',$id);
         
@@ -385,7 +317,6 @@ public function view_plans()
             $result = '';
         }
 
-        // Plans View Data
 
         $query_plans_view_data = $this->User_model->query("SELECT * FROM plans");
         if($query_plans_view_data->num_rows() > 0)
@@ -405,11 +336,6 @@ public function view_plans()
     }
 
 
-/////////////////////////////////////// VIEW PLAN ENDS  /////////////////////////////////////////////
-
-/////////////////////////////////////// GET PLAN SEQUENCE AJAX   ////////////////////////////////////
-
-
 public function get_plan_sequence_ajax()
     {
 
@@ -425,10 +351,4 @@ public function get_plan_sequence_ajax()
             $result_plans_sequence = '';
         }
     }
-
-
-/////////////////////////////////////// GET PLAN SEQUENCE AJAX   //////////////////////////////////////
-
-
-
 }
