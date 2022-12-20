@@ -2,21 +2,7 @@
 
 class Report extends MY_Controller {
 
-    /**
-     * Index Page for this controller.
-     *
-     * Maps to the following URL
-     *      http://example.com/index.php/welcome
-     *  - or -
-     *      http://example.com/index.php/welcome/index
-     *  - or -
-     * Since this controller is set as the default controller in
-     * config/routes.php, it's displayed at http://example.com/
-     *
-     * So any other public methods not prefixed with an underscore will
-     * map to /index.php/welcome/<method_name>
-     * @see https://codeigniter.com/user_guide/general/urls.html
-     */
+
 
     function __construct() {
         ob_start();
@@ -323,7 +309,6 @@ Email : info@committi.com<br></td></tr>
                 $spreadsheet->getActiveSheet()->getColumnDimension($columnID)
                         ->setAutoSize(true);
             }
-            // set the names of header cells
             $spreadsheet->setActiveSheetIndex(0)
                     ->setCellValue("A1",'Plan Name')
                     ->setCellValue("B1",'Reference')
@@ -352,23 +337,15 @@ Email : info@committi.com<br></td></tr>
 
 
 
-            // Rename worksheet
             $spreadsheet->getActiveSheet()->setTitle('Transaction Report ');
-
-            // set right to left direction
-            //      $spreadsheet->getActiveSheet()->setRightToLeft(true);
-
-            // Set active sheet index to the first sheet, so Excel opens this as the first sheet
             $spreadsheet->setActiveSheetIndex(0);
 
             // Redirect output to a client’s web browser (Excel2007)
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="TransactionReport.xlsx"');
             header('Cache-Control: max-age=0');
-            // If you're serving to IE 9, then the following may be needed
             header('Cache-Control: max-age=1');
 
-            // If you're serving to IE over SSL, then the following may be needed
             header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
             header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
             header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
@@ -518,10 +495,7 @@ Email : info@committi.com<br></td></tr>
 
  
             require_once APPPATH . '/third_party/Phpexcel/Bootstrap.php';
-            // Create new Spreadsheet object
             $spreadsheet = new \PhpOffice\PhpSpreadsheet\Spreadsheet();
-
-            // add style to the header
             $styleArray = array(
                     'font' => array(
                             'bold' => true,
@@ -548,14 +522,10 @@ Email : info@committi.com<br></td></tr>
             );
             $spreadsheet->getActiveSheet()->getStyle('A1:G1')->applyFromArray($styleArray);
 
-
-            // auto fit column to content
-
             foreach(range('A','G') as $columnID) {
                 $spreadsheet->getActiveSheet()->getColumnDimension($columnID)
                         ->setAutoSize(true);
             }
-            // set the names of header cells
             $spreadsheet->setActiveSheetIndex(0)
                     ->setCellValue("A1",'Plan Name')
                     ->setCellValue("B1",'Reference')
@@ -584,23 +554,12 @@ Email : info@committi.com<br></td></tr>
 
 
 
-            // Rename worksheet
             $spreadsheet->getActiveSheet()->setTitle('Transaction Report ');
-
-            // set right to left direction
-            //      $spreadsheet->getActiveSheet()->setRightToLeft(true);
-
-            // Set active sheet index to the first sheet, so Excel opens this as the first sheet
             $spreadsheet->setActiveSheetIndex(0);
-
-            // Redirect output to a client’s web browser (Excel2007)
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="TransactionReport.xlsx"');
             header('Cache-Control: max-age=0');
-            // If you're serving to IE 9, then the following may be needed
             header('Cache-Control: max-age=1');
-
-            // If you're serving to IE over SSL, then the following may be needed
             header('Expires: Mon, 26 Jul 1997 05:00:00 GMT'); // Date in the past
             header('Last-Modified: ' . gmdate('D, d M Y H:i:s') . ' GMT'); // always modified
             header('Cache-Control: cache, must-revalidate'); // HTTP/1.1
@@ -645,7 +604,6 @@ Email : info@committi.com<br></td></tr>
             else{
               $bidding_details='';
             }
-                  // $attach_file_name=FCPATH.'assets/users/statement_pdf/transaction_'.$plan_id.'_'.$user_id.'.pdf';
                     $attach_file_name='bidding_detail_report_'.$plan_id.'_'.$user_id.'.pdf';
                   $this->load->library('Pdf');
                   $obj_pdf = new TCPDF('P', PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);  
@@ -662,8 +620,6 @@ Email : info@committi.com<br></td></tr>
                   $obj_pdf->SetAutoPageBreak(TRUE, 10);  
                   $obj_pdf->SetFont('helvetica', '', 9);  
                   $obj_pdf->AddPage();  
-                  // $style = array('width' => 0.5, 'dash' => '2,2,2,2', 'phase' => 0, 'color' => array(0, 0, 0));
-                  // $obj_pdf->Line(-1, 210, 250, 210, $style);
                   $content = '';
                   $content .= '<h4 align="left"><img  src="'.base_url().'assets/img/logo2.jpg"></h4><br/>';
                         $content .= '
@@ -774,8 +730,6 @@ public function generateUserDetailsReport(){
                   $obj_pdf->SetAutoPageBreak(TRUE, 10);  
                   $obj_pdf->SetFont('helvetica', '', 9);  
                   $obj_pdf->AddPage();  
-                  // $style = array('width' => 0.5, 'dash' => '2,2,2,2', 'phase' => 0, 'color' => array(0, 0, 0));
-                  // $obj_pdf->Line(-1, 210, 250, 210, $style);
                   $content = '';
                   $content .= '<h4 align="left"><img  src="'.base_url().'assets/img/logo2.jpg"></h4><br/>';
                         $content .= '
@@ -857,8 +811,6 @@ public function generateUserDetailsReport(){
                   $obj_pdf->SetAutoPageBreak(TRUE, 10);  
                   $obj_pdf->SetFont('helvetica', '', 9);  
                   $obj_pdf->AddPage();  
-                  // $style = array('width' => 0.5, 'dash' => '2,2,2,2', 'phase' => 0, 'color' => array(0, 0, 0));
-                  // $obj_pdf->Line(-1, 210, 250, 210, $style);
                   $content = '';
                   $content .= '<h4 align="left"><img  src="'.base_url().'assets/img/logo2.jpg"></h4><br/>';
                         $content .= '
@@ -979,8 +931,7 @@ public function generateUserDetailsReport(){
                   $obj_pdf->SetAutoPageBreak(TRUE, 10);  
                   $obj_pdf->SetFont('helvetica', '', 9);  
                   $obj_pdf->AddPage();  
-                  // $obj_pdf->Line(-1, 210, 250, 210, $style);
-                  $content = '';
+	  			$content = '';
                   $content .= '<h4 align="left"><img  src="'.base_url().'assets/img/logo2.jpg"></h4><br/>';
                         $content .= '
                         <h1>Statement Report </h1>
