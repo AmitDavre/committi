@@ -3,21 +3,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Plans extends MY_Controller {
 
-
-
-    function __construct() {
-        ob_start();
-        parent::__construct();
-        if ($this->session->userdata('username') == '') {
-            redirect(base_url('login'));
-            exit;
-        }
-        $this->load->model('User_model'); 
-
-      
-    }
-
-
     public function iterateMonths(DateTime $date, $months, $iterations,$time)
     {
         $day = $date->format('d');
