@@ -49,10 +49,7 @@ class Home extends CI_Controller {
          $data['setting_step_guide_6']=$result_selectterms['0']['setting_step_guide_6'];
          $data['setting_step_guide_7']=$result_selectterms['0']['setting_step_guide_7'];
          $data['setting_step_guide_8']=$result_selectterms['0']['setting_step_guide_8'];
-         $data['setting_step_guide_9']=$result_selectterms['0']['setting_step_guide_9'];
-         $data['setting_step_guide_10']=$result_selectterms['0']['setting_step_guide_10'];
-         $data['setting_step_guide_11']=$result_selectterms['0']['setting_step_guide_11'];
-         $data['setting_step_guide_12']=$result_selectterms['0']['setting_step_guide_12'];
+         $data['setting_step_guide_9']=$result_selectterms['0']['setting_step_guide_9']
         }
         else
        {
@@ -89,8 +86,7 @@ public function termsAndConditions()
   else
   {
       $result_get_no_statement = '';
-      $result_selecttermss['result_selecttermss'] ='';
-
+    
   }
 
          $selectterms = $this->User_model->query("SELECT * FROM settings WHERE setting_id = '1'");
@@ -117,7 +113,7 @@ public function termsAndConditions()
         $data['setting_step_guide_3']='';
         $data['setting_step_guide_4']='';
         $data['setting_step_guide_5']='';
-        $data['setting_step_guide_6']='';
+
         $data['setting_step_guide_7']='';
         $data['setting_step_guide_8']='';
         $data['setting_step_guide_9']='';
@@ -201,8 +197,7 @@ public function contactUs()
                  'img_url'       => base_url().'assets/captcha_images/',
                  'font_path' => BASEPATH.'fonts/texb.ttf',
                  'img_width' => 200,
-                 'img_height' => 50,
-                 'expiration' => 7200
+                
         );
         $captcha = create_captcha($config);
         // Unset previous captcha and set new captcha word
@@ -226,7 +221,7 @@ public function contactUs()
          $data['setting_step_guide_8']=$result_selectterms['0']['setting_step_guide_8'];
          $data['setting_step_guide_9']=$result_selectterms['0']['setting_step_guide_9'];
          $data['setting_step_guide_10']=$result_selectterms['0']['setting_step_guide_10'];
-         $data['setting_step_guide_11']=$result_selectterms['0']['setting_step_guide_11'];
+       
          $data['setting_step_guide_12']=$result_selectterms['0']['setting_step_guide_12'];
         }
         else
@@ -241,7 +236,7 @@ public function contactUs()
         $data['setting_step_guide_8']='';
         $data['setting_step_guide_9']='';
         $data['setting_step_guide_10']='';
-        $data['setting_step_guide_11']='';
+     
         $data['setting_step_guide_12']='';
         }
 
@@ -252,8 +247,7 @@ public function contactUs()
 
     public function refreshCaptcha()
     {
-        // Captcha configuration
- 
+       
         $config = array(
                 'word' => $this->rand,
                 'img_path'      => 'assets/captcha_images/',
@@ -266,7 +260,6 @@ public function contactUs()
    
         $captcha = create_captcha($config);
         
-        // Unset previous captcha and set new captcha word
         $this->session->unset_userdata('code');
         $this->session->set_userdata('code',$captcha['word']);
         
@@ -289,7 +282,6 @@ public function aboutUs()
       $setting_about_us['setting_about_us'] ='';
 
   }
-	// $this->load->view('about/about',$setting_about_us);
 
        $selectterms = $this->User_model->query("SELECT * FROM settings WHERE setting_id = '1'");
          if($selectterms->num_rows() > 0)
@@ -333,10 +325,7 @@ public function viewsPlans()
 {
 
     $url_data    = $this->uri->segment(2); 
-     
-
-    //echo sprintf('%04s', $var);
-   
+        
     if($url_data == '')
    {
         $query =  $this->User_model->query("SELECT * FROM plans WHERE  plan_tier_1_left_memebers != '0' OR plan_tier_2_left_memebers != '0' OR plan_tier_3_left_memebers != '0' OR plan_tier_4_left_memebers != '0'");
@@ -410,14 +399,11 @@ public function viewsPlans()
         {
             $result = '';
         }
-        // ens sec get data from the plan seq table+++++++++++++++++++=>
 
 
       $data['content'] = $this->load->view('plans/plans', $data , true);
       $this->load->view('home_template/template', $data);
 }
-
-//////////////////////// DASHBOARD PLAN INFORMATION /////////////////////
 
 public function plan_informations()
 {   
@@ -435,9 +421,6 @@ public function plan_informations()
     }
     echo json_encode($query_plan_result);
 }
-
-
-//////////////////////// DASHBOARD PLAN INFORMATION //////////////////////
 
 
 
