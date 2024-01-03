@@ -1,5 +1,4 @@
 <?php
-	//changed 27-12-2023
 	echo $content;
 
 
