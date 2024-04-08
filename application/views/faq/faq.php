@@ -1,5 +1,5 @@
 <?php 
-$Province  = $this->config->item('Province');
+$Province  = $this->config->item('Province'); //get provice from configuration properties
 ?>
 <!DOCTYPE html>
 <html lang="en">
